@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG Essentials</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
+  <h3>Chap.3 Coordinates</h3>
+  <div class="container">
+    <div class="cell0101">
+      <div class="cellid">cell0101</div>
+      <h4>Ex 3-1. Using default coordinates</h4>
+      <h4 style="color: red">Ex 3-2. Explicit use of units</h4>
+      <svg width="200" height="200">
+    <!--
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+    -->
+        <g id="svgGrid">
+          <image xlink:href="images/pixel_ruler.svg" x="0" y="0" width="200" height="200"/>
+        </g>
+        <g id="svgMarkup" transform="translate(40,40)">
+          <rect x="10" y="10" width="50" height="30"
+             style="stroke: black; fill: none;"/>
+          <rect x="10mm" y="10mm" width="15mm" height="10mm"
+             style="stroke: red; fill: none;"/>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0201">
+      <div class="cellid">cell0201</div>
+      <h4>Ex 3-3. Units on the svg element</h4>
+      <svg width="70mm" height="70mm">
+        <g>
+          <image xlink:href="images/mm_ruler.svg" x="0" y="0" width="200" height="200"/>
+        </g>
+        <g transform="translate(40,40)">
+          <rect x="10" y="10" width="50" height="30"
+             style="stroke: black; fill: none;"/>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0301">
+      <div class="cellid">cell0301</div>
+      <h4>Ex 3-4. Using a viewBox</h4>
+      <svg width="70mm" height="70mm">
+        <g>
+          <image xlink:href="images/cm_ruler.svg" x="0" y="0" width="10cm" height="10cm"/>
+          <image xlink:href="images/scaled_grid.svg" x="60" y="60" width="5cm" height="5cm"/>
+        </g>
+        <g transform="translate(60,60)">
+          <svg width="4cm" height="5cm" viewBox="0 0 64 80">
+            <rect x="10" y="35" width="40" height="40" style="stroke: black; fill: none;"/>
+            <!-- roof -->
+            <polyline points="10 35, 30 7.68, 50 35" style="stroke: black; fill: none;"/>
+            <!-- door -->
+            <polyline points="30 75, 30 55, 40 55, 40 75" style="stroke: black; fill: none;"/>
+          </svg>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0401">
+      <div class="cellid">cell0401</div>
+    </div>
+    <div class="cell0102">
+      <div class="cellid">cell0102</div>
+      <h4>Using the meet Specifier: tall viewports</h4>
+      <svg width="45" height="200">
+        <g id="rectTall">
+          <rect x="0" y="0" width="45" height="135" style="fill:none; stroke:blue"/>
+        </g>
+        <svg preserveAspectRatio="xMidYMin meet" viewBox="0 0 90 90" width="45" height="135">
+          <g id="neko">
+            <circle cx="42" cy="57" r="30" stroke="black" fill="none"/>
+            <circle cx="33" cy="48" r="3" style="stroke:none; fill:#339933;"/>
+            <circle cx="51" cy="48" r="3" style="stroke:none; fill:#339933;"/>
+            <g id="whiskers">
+              <line x1="45" y1="57" x2="81" y2="51" stroke="black"/>
+              <line x1="45" y1="57" x2="81" y2="62" stroke="black"/>
+            </g>
+            <use xlink:href="#whiskers" transform="scale(-1 1) translate(-84 0)"/>
+            <!-- ears -->
+            <polyline stroke="black" fill="none"
+              points="64.8 37.2, 54 6, 42 27, 30 6, 19.2 37.2"/>
+            <!-- mouth -->
+            <polyline stroke="black" fill="none"
+              points="21 66, 27 72, 57 72, 62 66"/>
+            <path stroke="black" fill="#ffcccc"
+              d="M 45 54 L 39 54 A 3 6 0  0 0 45 54"/>
+          </g>
+        </svg>
+        <text x="8" y="160" style="font-size:.7em">yMin</text>
+      </svg>
+      <svg width="45" height="200">
+        <use xlink:href="#rectTall"/>
+        <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 90 90" width="45" height="135">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="8" y="160" style="font-size:.7em">yMid</text>
+      </svg>
+      <svg width="45" height="200">
+        <use xlink:href="#rectTall"/>
+        <svg preserveAspectRatio="xMidYMax meet" viewBox="0 0 90 90" width="45" height="135">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="8" y="160" style="font-size:.7em">yMax</text>
+      </svg>
+    </div>
+    <div class="cell0202">
+      <div class="cellid">cell0202</div>
+      <h4>Using the meet Specifier: wide viewports</h4>
+      <svg width="200" height="45">
+        <g id="rectWide">
+          <rect x="0" y="0" width="135" height="45" style="fill:none; stroke:blue"/>
+        </g>
+        <svg preserveAspectRatio="xMinYMid meet" viewBox="0 0 90 90" width="135" height="45">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="160" y="25" style="font-size:.7em">xMin</text>
+      </svg>
+      <svg width="200" height="45">
+        <use xlink:href="#rectWide"/>
+        <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 90 90" width="135" height="45">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="160" y="25" style="font-size:.7em">xMid</text>
+      </svg>
+      <svg width="200" height="45">
+        <use xlink:href="#rectWide"/>
+        <svg preserveAspectRatio="xMaxYMid meet" viewBox="0 0 90 90" width="135" height="45">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="160" y="25" style="font-size:.7em">xMax</text>
+      </svg>
+    </div>
+    <div class="cell0302">
+      <div class="cellid">cell0302</div>
+      <svg width="200px" height="200px" viewBox="0 0 200 200">
+        <g id="circle1">
+          <circle cx="25" cy="25" r="25" style="stroke: black; fill: none;"/>
+        </g>
+        <rect x="100" y="5" width="30" height="80" style="stroke: blue; fill: linen;"/>
+        <svg x="100px" y="5px" width="30px" height="80px"
+          viewBox="0 0 50 50" preserveAspectRatio="xMaxYMax meet">
+          <use xlink:href="#circle1"/>
+        </svg>
+      </svg>
+    </div>
+    <div class="cell0402">
+      <div class="cellid">cell0402</div>
+    </div>
+    <div class="cell0103">
+      <div class="cellid">cell0103</div>
+      <h4>Using the slice Specifier: tall viewports</h4>
+      <svg width="45" height="200">
+        <use xlink:href="#rectTall"/>
+        <svg preserveAspectRatio="xMinYMid slice" viewBox="0 0 90 90" width="45" height="135">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="8" y="160" style="font-size:.7em">xMin</text>
+      </svg>
+      <svg width="45" height="200">
+        <use xlink:href="#rectTall"/>
+        <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 90 90" width="45" height="135">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="8" y="160" style="font-size:.7em">xMid</text>
+      </svg>
+      <svg width="45" height="200">
+        <use xlink:href="#rectTall"/>
+        <svg preserveAspectRatio="xMaxYMid slice" viewBox="0 0 90 90" width="45" height="135">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="8" y="160" style="font-size:.7em">xMax</text>
+      </svg>
+    </div>
+    <div class="cell0203">
+      <div class="cellid">cell0203</div>
+      <h4>Using the slice Specifier: wide viewports</h4>
+      <svg width="200" height="45">
+        <use xlink:href="#rectWide"/>
+        <svg preserveAspectRatio="xMidYMin slice" viewBox="0 0 90 90" width="135" height="45">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="160" y="25" style="font-size:.7em">yMin</text>
+      </svg>
+      <svg width="200" height="45">
+        <use xlink:href="#rectWide"/>
+        <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 90 90" width="135" height="45">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="160" y="25" style="font-size:.7em">yMid</text>
+      </svg>
+      <svg width="200" height="45">
+        <use xlink:href="#rectWide"/>
+        <svg preserveAspectRatio="xMidYMax slice" viewBox="0 0 90 90" width="135" height="45">
+          <use xlink:href="#neko"/>
+        </svg>
+        <text x="160" y="25" style="font-size:.7em">yMax</text>
+      </svg>
+    </div>
+    <div class="cell0303">
+      <div class="cellid">cell0303</div>
+      <h4>Using the none Specifier</h4>
+      <svg width="45" height="200">
+        <use xlink:href="#rectTall"/>
+        <svg preserveAspectRatio="none" viewBox="0 0 90 90" width="45" height="135">
+          <use xlink:href="#neko"/>
+        </svg>
+      </svg>
+      <svg width="200" height="45">
+        <use xlink:href="#rectWide"/>
+        <svg preserveAspectRatio="none" viewBox="0 0 90 90" width="135" height="45">
+          <use xlink:href="#neko"/>
+        </svg>
+      </svg>
+    </div>
+    <div class="cell0403">
+      <div class="cellid">cell0403</div>
+    </div>
+  </div>
+</body>
+</html>

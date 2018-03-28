@@ -1,0 +1,54 @@
+h1, h2, h3, h4 {
+  margin: 2px;
+}
+div.background-cat {
+  background-image: url("images/cat.svg");
+  background-size: 100% 100%;
+  width: 200px;
+  height: 200px;
+}
+.container {
+  display: grid;
+  width: 900px;
+  height: 800px;
+  grid-gap: .1rem;
+  margin-bottom: 4px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "cell0101 cell0102 cell0103"
+    "cell0201 cell0202 cell0203"
+    "cell0301 cell0302 cell0303"
+    "cell0401 cell0402 cell0403";
+}
+
+.cell0101 { grid-area: cell0101; }
+.cell0102 { grid-area: cell0102; }
+.cell0103 { grid-area: cell0103; }
+.cell0201 { grid-area: cell0201; }
+.cell0202 { grid-area: cell0202; }
+.cell0203 { grid-area: cell0203; }
+.cell0301 { grid-area: cell0301; }
+.cell0302 { grid-area: cell0302; }
+.cell0303 { grid-area: cell0303; }
+.cell0401 { grid-area: cell0401; }
+.cell0402 { grid-area: cell0402; }
+.cell0403 { grid-area: cell0403; }
+
+.container > div {
+  border: 4px solid rgba(107,142,35,0.2);
+}
+
+svg {
+  margin: auto;
+  padding: 0;
+  border: 1px dotted pink;
+  background-color: ivory;
+}
+
+.cellid {
+  font-family: cursive;
+  font-size: .7em;
+  color: rgba(0,128,0,.5);
+  text-align: center;
+}

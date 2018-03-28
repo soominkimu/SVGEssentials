@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG Essentials</title>
+  <link rel="stylesheet" href="styles.css">
+  <!--
+  <link rel="stylesheet" href="ext_style.css">
+  -->
+</head>
+<body>
+  <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
+  <h3>Chap.5 Document Structure</h3>
+  <div class="container">
+    <div class="cell0101">
+      <h4>Inline Styles</h4>
+      <div class="cellid">cell0101</div>
+      <svg width="200px" height="200px" viewBox="0 0 200 200">
+        <circle cx="20" cy="20" r="10"
+          style="stroke:black; stroke-width:1.5; fill:blue; fill-opacity:0.6"/>
+      </svg>
+    </div>
+    <div class="cell0201">
+      <div class="cellid">cell0201</div>
+      <h4>Internal Stylesheets</h4>
+      <svg width="200px" height="200px" viewBox="0 0 200 200">
+        <defs>
+          <style type="text/css"><![CDATA[
+            circle.intStyle {
+              fill: #ffc;
+              stroke: blue;
+              stroke-width: 2;
+              stroke-dasharray: 5 3
+            }
+          ]]></style>
+        </defs>
+        <circle class="intStyle" cx="20" cy="20" r="10"/>
+        <circle class="intStyle" cx="60" cy="20" r="15"/>
+        <circle class="intStyle" cx="20" cy="60" r="10" style="fill:#cfc"/>
+        <circle class="intStyle" cx="60" cy="60" r="15" style="stroke-width:1; stroke-dasharray:none;"/>
+      </svg>
+    </div>
+    <div class="cell0301">
+      <div class="cellid">cell0301</div>
+      <h4>External Stylesheets</h4>
+      <?xml version="1.0"?>
+      <?xml-stylesheet href="ext_style.css" type="text/css"?>
+      <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+      <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 200 200">
+        <line x1="10" y1="10" x2="40" y2="10"/>
+        <rect class="dash" x="10" y="20" width="40" height="30"/>
+        <circle class="yellow" cx="70" cy="20" r="10"/>
+        <polygon class="thick" points="60 50, 60 80, 90 80"/>
+        <polygon class="thick semiblue" points="100 30, 150 30, 150 50, 130 50"/>
+      </svg>
+    </div>
+    <div class="cell0401">
+      <div class="cellid">cell0401</div>
+      <h4>Presentation Attributes</h4>
+      <svg width="200" height-"200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style tyle="text/css"><![CDATA[
+            circle.redEx { fill: red; }
+          ]]></style>
+        </defs>
+        <circle class="redEx" cx="20" cy="20" r="15" fill="green"/>
+      </svg>
+    </div>
+    <div class="cell0102">
+      <div class="cellid">cell0102</div>
+      <h3>Grouping and Referencing Objects</h3>
+      <h4>The &lt;g&gt; Element</h4>
+      <svg width="240px" height="240px" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <title>Grouped Drawing</title>
+        <desc>Stick-figure drawings of a house and people</desc>
+        
+        <g id="house" style="fill:none; stroke:black;">
+          <desc>House with door</desc>
+          <rect x="6" y="50" width="60" height="60"/>
+          <polyline points="6 50, 36 9, 66 50"/>
+          <polyline points="36 110, 36 80, 50 80, 50 110"/>
+        </g>
+
+        <g id="man" style="fill:none; stroke:black; stroke-width:4px;">
+          <desc>Male human</desc>
+          <circle cx="85" cy="56" r="10"/>
+          <line x1="85" y1="66" x2="85" y2="80"/>
+          <polyline points="76 104, 85 80, 94 104"/>
+          <polyline points="76 70, 85 76, 94 70"/>
+        </g>
+
+        <g id="woman" style="fill:none; stroke:FireBrick; stroke-width:2px;">
+          <desc>Female human</desc>
+          <circle cx="110" cy="56" r="10"/>
+          <polyline points="110 66, 110 80, 100 90, 120 90, 110 80"/>
+          <line x1="104" y1="104" x2="108" y2="90"/>
+          <line x1="112" y1="90" x2="116" y2="104"/>
+          <polyline points="101 70, 110 76, 119 70"/>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0202">
+      <div class="cellid">cell0202</div>
+      <h4>The &lt;use&gt; Element</h4>
+      <svg width="240px" height="240px" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <use xlink:href="#house"/>
+        <use xlink:href="#woman"/>
+        <use xlink:href="#man"/>
+        <use xlink:href="#house" x="70" y="100"/>
+        <use xlink:href="#woman" x="-80" y="100"/>
+        <use xlink:href="#man" x="-30" y="100"/>
+      </svg>
+    </div>
+    <div class="cell0302">
+      <div class="cellid">cell0302</div>
+      <h4>The &lt;defs&gt; Element</h4>
+      <svg width="240px" height="240px" viewBox="0 0 240 240">
+        <title>Grouped Drawing</title>
+        <desc>Stick-figure drawings of a house and people</desc>
+        
+        <defs>
+        <g id="house2" style="stroke:black;">
+          <desc>House with door</desc>
+          <rect x="0" y="41" width="60" height="60"/>
+          <polyline points="0 41, 30 0, 60 41"/>
+          <polyline points="30 101, 30 71, 44 71, 44 101"/>
+        </g>
+
+        <g id="man2" style="fill:none; stroke:darkblue; stroke-width:2px;">
+          <desc>Male stick fiture</desc>
+          <circle cx="10" cy="10" r="10"/>
+          <line x1="10" y1="20" x2="10" y2="44"/>
+          <polyline points="1 58, 10 44, 19 58"/>
+          <polyline points="1 24, 10 30, 19 24"/>
+        </g>
+
+        <g id="woman2" style="fill:none; stroke:DeepPink; stroke-width:2px;">
+          <desc>Female stick figure</desc>
+          <circle cx="10" cy="10" r="10"/>
+          <polyline points="10 20, 10 34, 0 44, 20 44, 10 34"/>
+          <line x1="4" y1="58" x2="8" y2="44"/>
+          <line x1="12" y1="44" x2="16" y2="58"/>
+          <polyline points="1 24, 10 30, 19 24"/>
+        </g>
+
+        <g id="couple">
+          <desc>Male and female stick figures</desc>
+          <use xlink:href="#man2" x="0" y="0"/>
+          <use xlink:href="#woman2" x="25" y="0"/>
+        </g>
+        </defs>
+
+        <!-- make use of the defined groups -->
+        <use xlink:href="#house2" x="0" y="0" style="fill:#cfc;"/>
+        <use xlink:href="#couple" x="70" y="40"/>
+
+        <use xlink:href="#house2" x="120" y="0" style="fill:#99f;"/>
+        <use xlink:href="#couple" x="190" y="40"/>
+
+        <use xlink:href="#woman2" x="0" y="145"/>
+        <use xlink:href="#man2" x="25" y="145"/>
+        <use xlink:href="#house2" x="65" y="105" style="fill:#c00;"/>
+      </svg>
+    </div>
+    <div class="cell0402">
+      <div class="cellid">cell0402</div>
+      <h4>xlink:href</h4>
+      <svg width="200px" height="200px" viewBox="0 0 200 200">
+        <use xlink:href="identity.svg#company_logo" x="10" y="10"/>
+        <!-- Not working, Mar.25,2018 -->
+      </svg>
+    </div>
+    <div class="cell0103">
+      <div class="cellid">cell0103</div>
+      <h4>The &lt;symbol&gt; Element</h4>
+      <svg width="200px" height="200px" viewBox="0 0 200 200">
+        <title>Symbols vs. groups</title>
+        <desc>Use</desc>
+
+        <defs>
+          <g id="grp-octagon" style="stroke:black;">
+            <desc>Octagon as group</desc>
+            <polygon points="36 25, 25 36, 11 36, 0 25, 0 11, 11 0, 25 0, 36 11"/>
+          </g>
+
+          <symbol id="sym-octagon" style="stroke:black;" preserveAspectRatio="xMidYMid slice" viewBox="0 0 40 40">
+            <desc>Octagon as symbol</desc>
+            <polygon points="36 25, 25 36, 11 36, 0 25, 0 11, 11 0, 25 0, 36 11"/>
+          </symbol>
+        </defs>
+
+        <g style="fill:none; stroke:gray;">
+          <rect x="40" y="40" width="30" height="30"/>
+          <rect x="80" y="40" width="40" height="60"/>
+          <rect x="40" y="110" width="30" height="30"/>
+          <rect x="80" y="110" width="40" height="60"/>
+        </g>
+        <use xlink:href="#grp-octagon" x="40" y="40" width="30" height="30" style="fill:#c00;"/>
+        <use xlink:href="#grp-octagon" x="80" y="40" width="40" height="60" style="fill:#cc0;"/>
+        <use xlink:href="#sym-octagon" x="40" y="110" width="30" height="30" style="fill:#cfc;"/>
+        <use xlink:href="#sym-octagon" x="80" y="110" width="40" height="60" style="fill:#699;"/>
+      </svg>
+    </div>
+    <div class="cell0203">
+      <div class="cellid">cell0203</div>
+      <h4>The &lt;image&gt; Element</h4>
+      <svg width="310px" height="280px" viewBox="0 0 310 280">
+        <g id="ellipse-shadowed">
+          <ellipse cx="154" cy="154" rx="150" ry="120" style="fill:#999999;"/>
+          <ellipse cx="152" cy="152" rx="150" ry="120" style="fill:#cceeff;"/>
+        </g>
+
+        <image xlink:href="images/tango.jpg" x="72" y="92" width="160" height="120" preserveAspectRatio="xMidYMid meet"/>
+      </svg>
+    </div>
+    <div class="cell0303">
+      <div class="cellid">cell0303</div>
+      <svg width="310px" height="280px" viewBox="0 0 310 280">
+        <use xlink:href="#ellipse-shadowed"/>
+
+        <image xlink:href="images/tango.jpg" x="72" y="92" width="160" height="120" preserveAspectRatio="xMidYMid slice"/>
+      </svg>
+    </div>
+    <div class="cell0403">
+      <div class="cellid">cell0403</div>
+      <svg width="310px" height="280px" viewBox="0 0 310 280">
+        <use xlink:href="#ellipse-shadowed"/>
+
+        <image xlink:href="images/cat.svg" x="72" y="92" width="160" height="120" preserveAspectRatio="xMidYMid meet"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
