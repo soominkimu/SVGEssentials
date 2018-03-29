@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG Essentials</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
+  <h3>Chap.8 Patterns and Gradients</h3>
+  <div class="container">
+    <div class="cell0101">
+      <div class="cellid">cell0101</div>
+      <h4>patternUnits="objectBoundingBox"</h4>
+      <svg width="240px" height="300px" viewBox="0 0 240 300">
+        <defs>
+          <pattern id="tileBB" x="0" y="0" width="20%" height="20%" patternUnits="objectBoundingBox">
+            <g style="fill:none;">
+              <g id="pattern0">
+                <path d="M0 0 Q5 20 10 10 T20 20" style="stroke:OrangeRed;"/>
+                <path d="M0 0 h20 v20 h-20 z" style="stroke:green;"/>
+              </g>
+            </g>
+          </pattern>
+        </defs>
+
+        <rect x="20" y="20" width="100" height="100" style="fill:url(#tileBB); stroke:black;"/>
+        <rect x="135" y="20" width="70" height="80" style="fill:url(#tileBB); stroke:black;"/>
+        <rect x="20" y="140" width="150" height="130" style="fill:url(#tileBB); stroke:black;"/>
+      </svg>
+    </div>
+    <div class="cell0201">
+      <div class="cellid">cell0201</div>
+      <h4>patternUnits="userSpaceOnUse"</h4>
+      <svg width="240px" height="300px" viewBox="0 0 240 300">
+        <defs>
+          <pattern id="tileUSO" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <use xlink:href="#pattern0" style="fill:rgba(255,255,0,0.2);"/>
+          </pattern>
+        </defs>
+
+        <rect x="20" y="20" width="100" height="100" style="fill:url(#tileUSO); stroke:black;"/>
+        <rect x="135" y="20" width="70" height="80" style="fill:url(#tileUSO); stroke:black;"/>
+        <rect x="20" y="140" width="150" height="130" style="fill:url(#tileUSO); stroke:black;"/>
+      </svg>
+    </div>
+    <div class="cell0301">
+      <div class="cellid">cell0301</div>
+    </div>
+    <div class="cell0401">
+      <div class="cellid">cell0401</div>
+    </div>
+    <div class="cell0102">
+      <div class="cellid">cell0102</div>
+    </div>
+    <div class="cell0202">
+      <div class="cellid">cell0202</div>
+    </div>
+    <div class="cell0302">
+      <div class="cellid">cell0302</div>
+    </div>
+    <div class="cell0402">
+      <div class="cellid">cell0402</div>
+    </div>
+    <div class="cell0103">
+      <div class="cellid">cell0103</div>
+    </div>
+    <div class="cell0203">
+      <div class="cellid">cell0203</div>
+    </div>
+    <div class="cell0303">
+      <div class="cellid">cell0303</div>
+    </div>
+    <div class="cell0403">
+      <div class="cellid">cell0403</div>
+    </div>
+  </div>
+</body>
+</html>
