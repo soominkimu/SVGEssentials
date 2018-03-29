@@ -91,35 +91,152 @@
     </div>
     <div class="cell0102">
       <div class="cellid">cell0102</div>
-      <h4>Bezier Curves</h4>
-      <svg width="310px" height="300px" viewBox="0 0 310 300">
-        <circle cx="240" cy="30" r="2" style="stroke:black;"/>
-        <line x1="240" y1="30" x2="30" y2="75" style="stroke:lightgray;"/>
-        <path d="M30 75 Q240 30, 300 120" style="stroke:black; stroke-width:3; fill:none;"/>
-        <path d="M30 100 Q80 30, 100 100, 130 65, 200 80"
-          style="stroke:blue; stroke-width:3; fill:none;" transform="translate(0,50)"/>
+      <h4>Quadratic Bezier Curves</h4>
+      <svg width="310px" height="200px" viewBox="0 0 310 200">
+        <circle cx="240" cy="30" r="3" style="stroke:red; fill:none;"/>
+        <path id="guidepath" d="M240 30 L30 75 M240 30 L300 120 M135 52.5 L270 75" style="stroke:gray; fill:none;"/>
+        <path d="M30 75 Q240 30,300 120" style="stroke:black; stroke-width:3; fill:none;"/>
       </svg>
     </div>
     <div class="cell0202">
       <div class="cellid">cell0202</div>
+      <h4>Smooth quadratic poly-Bezier curve</h4>
+      <svg width="310px" height="200px" viewBox="0 0 310 200">
+        <!-- Figure 7-9 -->
+        <path d="M30 100 Q80 30,100 100,130 65,200 80" style="stroke:lightgreen; stroke-width:7; fill:none;"/>
+        <!-- Figure 7-10 -->
+        <circle cx="80" cy="30" r="3" style="stroke:red; fill:none;"/>
+        <circle cx="120" cy="170" r="5" style="stroke:red; fill:plum;"/>  <!-- reflected control point -->
+        <path d="M30 100L80 30L100 100L120 170L200 80M55 65L90 65M110 135L160 125" style="stroke:gray; fill:none;"/>
+        <path d="M30 100 Q80 30,100 100 T200 80" style="stroke:green; stroke-width:3; fill:none;"/>
+      </svg>
     </div>
     <div class="cell0302">
       <div class="cellid">cell0302</div>
+      <h4>Cubic Bezier Curves</h4>
+      <svg width="310px" height="200px" viewBox="0 0 310 200">
+        <path d="M20 80 C50 20,150 60,200 120" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+        <circle cx="50" cy="20" r="3" style="stroke:red; fill:none;"/>
+        <circle cx="150" cy="60" r="3" style="stroke:red; fill:none;"/>
+        <path d="M20 80 L50 20,150 60,200 120M175 90L100 40,35 50M67 45L137 65" style="stroke:magenta; fill:none;"/>
+      </svg>
     </div>
     <div class="cell0402">
       <div class="cellid">cell0402</div>
+      <h4>cubic Bezier control point combinations</h4>
+      <svg width="310px" height="300px" viewBox="0 0 310 300">
+        <path d="M40 50 C10 10,140 10,110 50" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+        <circle cx="10" cy="10" r="3" style="stroke:red; fill:none;"/>
+        <circle cx="140" cy="10" r="3" style="stroke:red; fill:none;"/>
+        <path d="M40 50 L10 10 M110 50,140 10" style="stroke:magenta; fill:none;"/>
+
+        <g transform="translate(150,0)">
+          <path d="M40 50 C60 10,90 10,110 50" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+          <circle cx="60" cy="10" r="3" style="stroke:red; fill:none;"/>
+          <circle cx="90" cy="10" r="3" style="stroke:red; fill:none;"/>
+          <path d="M40 50 L60 10 M110 50,90 10" style="stroke:magenta; fill:none;"/>
+        </g>
+
+        <g transform="translate(0,100)">
+          <path d="M40 50 C110 10,40 10,110 50" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+          <circle cx="110" cy="10" r="3" style="stroke:red; fill:none;"/>
+          <circle cx="40" cy="10" r="3" style="stroke:red; fill:none;"/>
+          <path d="M40 50 L110 10 M110 50,40 10" style="stroke:magenta; fill:none;"/>
+        </g>
+
+        <g transform="translate(150,100)">
+          <path d="M40 50 C10 10,140 90,110 50" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+          <circle cx="10" cy="10" r="3" style="stroke:red; fill:none;"/>
+          <circle cx="140" cy="90" r="3" style="stroke:red; fill:none;"/>
+          <path d="M40 50 L10 10 M110 50,140 90" style="stroke:magenta; fill:none;"/>
+        </g>
+
+        <g transform="translate(0,200)">
+          <path d="M40 50 C60 10,90 90,110 50" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+          <circle cx="60" cy="10" r="3" style="stroke:red; fill:none;"/>
+          <circle cx="90" cy="90" r="3" style="stroke:red; fill:none;"/>
+          <path d="M40 50 L60 10 M110 50,90 90" style="stroke:magenta; fill:none;"/>
+        </g>
+
+        <g transform="translate(150,200)">
+          <path d="M40 50 C110 10,40 90,110 50" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+          <circle cx="110" cy="10" r="3" style="stroke:red; fill:none;"/>
+          <circle cx="40" cy="90" r="3" style="stroke:red; fill:none;"/>
+          <path d="M40 50 L110 10 M110 50,40 90" style="stroke:magenta; fill:none;"/>
+        </g>
+      </svg>
     </div>
     <div class="cell0103">
       <div class="cellid">cell0103</div>
+      <h4>Cubic poly-Bezier curve</h4>
+      <svg width="200px" height="200px" viewBox="0 0 200 200">
+        <path d="M30 100 C50 50,70 20,100 100,110 130,45 150,65 110" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+        <circle cx="50" cy="50" r="3" style="stroke:red; fill:none;"/>
+        <circle cx="70" cy="20" r="3" style="stroke:red; fill:none;"/>
+        <path d="M30 100 L50 50 M100 100,70 20" style="stroke:magenta; fill:none;"/>
+        <circle cx="110" cy="130" r="3" style="stroke:blue; fill:none;"/>
+        <circle cx="45" cy="150" r="3" style="stroke:blue; fill:none;"/>
+        <path d="M100 100 L110 130 M65 110,45 150" style="stroke:skyblue; fill:none;"/>
+      </svg>
     </div>
     <div class="cell0203">
       <div class="cellid">cell0203</div>
+      <h4>Smooth cubic poly-Bezier curve</h4>
+      <svg width="240px" height="200px" viewBox="0 0 240 200">
+        <path d="M30 100 C50 30,70 50,100 100 S150 40,200 80" style="stroke:lightgreen; stroke-width:5; fill:none;"/>
+        <circle cx="50" cy="30" r="3" style="stroke:red; fill:none;"/>
+        <circle cx="70" cy="50" r="3" style="stroke:red; fill:none;"/>
+        <path d="M30 100 L50 30 M100 100,70 50" style="stroke:magenta; fill:none;"/>
+        <circle cx="130" cy="150" r="5" style="stroke:blue; fill:plum;"/> <!-- reflected control point -->
+        <circle cx="150" cy="40" r="3" style="stroke:blue; fill:none;"/>
+        <path d="M100 100 L130 150 M200 80,150 40" style="stroke:skyblue; fill:none;"/>
+      </svg>
     </div>
     <div class="cell0303">
       <div class="cellid">cell0303</div>
+      <h4>Paths and Filling</h4>
+      <svg width="200px" height="200px" viewBox="0 0 200 200">
+        <!-- both paths clockwise -->
+        <path d="M0 0,60 0,60 60,0 60 Z M15 15,45 15,45 45,15 45Z"
+          style="fill-rule:nonzero; fill:lime; stroke:black;"/>
+        <path d="M0 0,60 0,60 60,0 60 Z M15 15,45 15,45 45,15 45Z"
+          style="fill-rule:evenodd; fill:lime; stroke:black;" transform="translate(0,100)"/>
+        <!-- outer path clockwise; inner path counterclockwise -->
+        <path d="M0 0,60 0,60 60,0 60 Z M15 15,15 45,45 45,45 15Z"
+          style="fill-rule:nonzero; fill:Fuchsia; stroke:black;" transform="translate(100,0)"/>
+        <path d="M0 0,60 0,60 60,0 60 Z M15 15,15 45,45 45,45 15Z"
+          style="fill-rule:evenodd; fill:Fuchsia; stroke:black;" transform="translate(100,100)"/>
+      </svg>
     </div>
     <div class="cell0403">
       <div class="cellid">cell0403</div>
+      <h4>The &lt;marker&gt; element</h4>
+      <svg width="200px" height="300px" viewBox="0 0 200 300">
+        <defs>
+          <marker id="mCircle" markerWidth="10" markerHeight="10" refX="5" refY="5">
+            <circle cx="5" cy="5" r="4" style="fill:none; stroke:blue;;"/>
+          </marker>
+          <marker id="mArrow" markerWidth="4" markerHeight="8" refX="0" refY="4" orient="auto">
+            <path d="M0 0 4 4 0 8" style="fill:none; stroke:green;"/>
+          </marker>
+          <marker id="mTriangle" markerWidth="5" markerHeight="10" refX="5" refY="5" orient="auto">
+            <path d="M0 0 5 5 0 10 Z" style="fill:red;"/>
+          </marker>
+        </defs>
+        <path d="M10 20 100 20 A20 30 0 0 1 120 50 L120 110"
+          style="marker-start:url(#mCircle);
+                marker-mid:url(#mArrow);
+                marker-end:url(#mTriangle);
+                fill:none; stroke:black; stroke-width:1;" transform="translate(50,0)"/>
+        <path d="M10 20 100 20 A20 30 0 0 1 120 50 L120 110"
+          style="marker-start:url(#mCircle);
+                marker-mid:url(#mArrow);
+                marker-end:url(#mTriangle);
+                fill:none; stroke:black; stroke-width:3;" transform="translate(50,100)"/>
+        <path d="M10 20 100 20 A20 30 0 0 1 120 50 L120 110"
+          style="marker:url(#mCircle);
+                fill:none; stroke:black; stroke-width:1;" transform="translate(10,160)"/>
+      </svg>
     </div>
   </div>
 </body>
