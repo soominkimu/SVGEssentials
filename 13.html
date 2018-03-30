@@ -7,14 +7,36 @@
 </head>
 <body>
   <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
-  <h3>Chap.</h3>
-  <a href="0.html">Prev</a>
+  <h3>Chap.13 Adding Interactivity</h3>
+  <a href="12.html">Prev</a>
   <a href="index.html">Top</a>
-  <a href="0.html">Next</a>
+  <a href="14.html">Next</a>
   <div class="container">
     <div class="cell0101">
       <div class="cellid">cell0101</div>
+      <h4>Links in SVG highlighted with CSS</h4>
       <svg width="300px" height="140px" viewBox="0 0 300 140">
+        <style type="text/css"><![CDATA[
+          a.words:hover, a.words:focus {
+            text-decoration: underline;
+            font-weight: bold;
+          }
+          a.shapes:hover, a.shapes:focus {
+            stroke:#66f;
+            stroke-width:3;
+            outline: none;  /* override default focus formatting */
+          }
+         ]]>
+        </style>
+
+        <a class="words" xlink:href="images/cat.svg">
+          <text x="100" y="30" style="font-size:12pt;">Cat</text>
+        </a>
+        <a class="shapes" xlink:href="http://www.w3.org/SVG/">
+          <circle cx="50" cy="70" r="20" style="fill:red;"/>
+          <rect x="75" y="50" width="40" height="40" style="fill:green;"/>
+          <path d="M120 90,140 50,160 90 Z" style="fill:blue;"/>
+        </a>
       </svg>
     </div>
     <div class="cell0201">

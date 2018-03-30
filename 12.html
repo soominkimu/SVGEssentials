@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG Essentials</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
+  <h3>Chap.12 Animating SVG</h3>
+  <a href="11.html">Prev</a>
+  <a href="index.html">Top</a>
+  <a href="13.html">Next</a>
+  <div class="container">
+    <div class="cell0101">
+      <div class="cellid">cell0101</div>
+      <h4>The incredible shrinking rectangle</h4>
+      <svg width="300px" height="140px" viewBox="0 0 300 140">
+        <g stroke="black" stroke-width="3" fill="lightgreen">
+          <rect id="rect_shrinking" x="10" y="10" width="200" height="20">
+            <animate
+              attributeName="width"
+              attributeType="XML"
+              from="200" to="20"
+              begin="0s" dur="5s"
+              fill="freeze" repeatCount="indefinite"/>
+          </rect>
+        </g>
+        <use xlink:href="#rect_shrinking" stroke="black" stroke-width="3" fill="orange" transform="translate(0,30)"/>
+        <use xlink:href="#rect_shrinking" stroke="black" stroke-width="3" fill="MistyRose" transform="translate(0,60)"/>
+      </svg>
+    </div>
+    <div class="cell0201">
+      <div class="cellid">cell0201</div>
+      <h4>Multiple animations on a single object</h4>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+        <rect x="10" y="10" width="20" height="20"
+          style="stroke:black; stroke-width:3; fill:green; fill-opacity:0.25;">
+          <animate attributeName="width" attributeType="XML"
+              from="20" to="200" begin="0s" dur="8s" fill="freeze"/>
+          <animate attributeName="height" attributeType="XML"
+              from="20" to="150" begin="0s" dur="8s" fill="freeze"/>
+          <animate attributeName="fill-opacity" attributeType="CSS"
+              from="0.25" to="1" begin="0s" dur="3s" fill="freeze"/>
+          <animate attributeName="fill-opacity" attributeType="CSS"
+              from="1" to="0.25" begin="3s" dur="3s" fill="freeze"/>
+          <animate attributeName="width" attributeType="XML"
+              from="200" to="20" begin="8s" dur="8s" fill="freeze"/>
+          <animate attributeName="height" attributeType="XML"
+              from="150" to="20" begin="8s" dur="8s" fill="freeze"/>
+          <animate attributeName="fill-opacity" attributeType="CSS"
+              from="0.25" to="1" begin="8s" dur="3s" fill="freeze"/>
+          <animate attributeName="fill-opacity" attributeType="CSS"
+              from="1" to="0.25" begin="11s" dur="3s" fill="freeze"/>
+        </rect>
+      </svg>
+    </div>
+    <div class="cell0301">
+      <div class="cellid">cell0301</div>
+      <h4>Simple animation of multiple objects</h4>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+        <rect x="10" y="10" width="20" height="20" style="stroke:black; stroke-width:3; fill:#cfc;">
+          <animate attributeName="width" attributeType="XML"
+              from="20" to="120" begin="0s" dur="8s" fill="freeze" repeatCount="indefinite"/>
+          <animate attributeName="height" attributeType="XML"
+              from="20" to="120" begin="0s" dur="8s" fill="freeze" repeatCount="indefinite"/>
+        </rect>
+        <circle cx="70" cy="70" r="20" style="fill:#ccf; stroke:black; stroke-width:3;">
+          <animate attributeName="r" attributeType="XML"
+              from="20" to="50" begin="2s" dur="4s" fill="freeze" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+    <div class="cell0401">
+      <div class="cellid">cell0401</div>
+      <h4>Synchronization of animations with offsets</h4>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+        <circle cx="60" cy="60" r="30" style="fill:#f9f; stroke:gray; stroke-width:3;">
+          <animate id="c1" attributeName="r" attributeTyep="XML"
+            begin="0s" dur="4s" from="30" to="10" fill="freeze"/>
+        </circle>
+        <circle cx="120" cy="60" r="10" style="fill:#9f9; stroke:gray; stroke-width:3;">
+          <animate attributeName="r" attributeTyep="XML"
+            begin="c1.end+1.25s" dur="4s" from="10" to="30" fill="freeze"/>
+        </circle>
+      </svg>
+    </div>
+    <div class="cell0102">
+      <div class="cellid">cell0102</div>
+      <h4>repeatCout, repeatDur / Sync with repeat()</h4>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+        <circle cx="60" cy="40" r="30" style="fill:none; stroke:red; stroke-width:3;">
+          <animate attributeName="cx" attributeType="XML"
+            begin="0s" dur="5s" repeatCount="2" from="60" to="260" fill="freeze"/>
+        </circle>
+        <circle cx="260" cy="60" r="30" style="fill:#ccf; stroke:black; stroke-width:3;">
+          <animate attributeName="cx" attributeType="XML"
+            begin="0s" dur="5s" repeatDur="8s" from="260" to="60" fill="freeze"/>
+        </circle>
+        <!-- Synchronizing an animation with repetition -->
+        <circle cx="60" cy="140" r="15" style="fill:none; stroke:red; stroke-width:3;">
+          <animate id="circleAnim" attributeName="cx" attributeType="XML"
+            begin="0s" dur="5s" repeatCount="3" from="60" to="260" fill="freeze"/>
+        </circle>
+        <rect x="230" y="150" width="30" height="30" style="fill:#ccf; stroke:black; stroke-width:3;">
+          <animate attributeName="x" attributeType="XML"
+            begin="circleAnim.repeat(1)+2.5s" dur="5s" from="230" to="30" fill="freeze"/>
+        </rect>
+      </svg>
+    </div>
+    <div class="cell0202">
+      <div class="cellid">cell0202</div>
+      <h4>Animating color, path and polygon</h4>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+        <circle cx="60" cy="50" r="30" style="fill:#ff9; stroke:gray; stroke-width:10;">
+          <animate attributeName="fill"
+            begin="2s" dur="4s" from="#ff9" to="red" fill="freeze" repeatCount="indefinite"/>
+          <animate attributeName="stroke"
+            begin="2s" dur="4s" from="gray" to="blue" fill="freeze" repeatCount="indefinite"/>
+        </circle>
+
+        <g transform="translate(150,0)">
+          <polygon points="30 30 70 30 90 70 10 70" style="fill:#fcc; stroke:black; stroke-width:3;">
+            <animate id="aniPoly" attributeName="points" attributeType="XML"
+              to="50 30 70 50 50 90 30 50"
+              begin="0s" dur="5s" fill="freeze" repeatCount="indefinite"/>
+          </polygon>
+
+          <path d="M15 50 Q40 15,50 50,65 32,100 40"
+            style="fill:none; stroke:black; stroke-width:10;" transform=translate(0,50)>
+            <animate attributeName="d" attributeType="XML"
+              to="M50 15 Q15 40,50 50,32 65,40 100"
+              begin="0s" dur="5s" fill="freeze" repeatCount="indefinite"/>
+          </path>
+        </g>
+
+        <g transform="translate(10,80)">
+          <circle cx="50" cy="50" r="30" style="fill:#ff9; stroke:black; stroke-width:3;">
+            <animate attributeName="fill"
+              begin="2s" dur="4s" values="#ff9;#99f;#f99;#9f9" fill="freeze" repeatCount="indefinite"/>
+          </circle>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0302">
+      <div class="cellid">cell0302</div>
+      <h4>&lt;set&gt;, &lt;animateTransform&gt;</h4>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+        <circle cx="60" cy="60" r="30" style="fill:#ff9; stroke:gray; stroke-width:3;">
+          <animate id="c10" attributeName="r" attributeType="XML"
+            begin="0s" dur="4s" from="30" to="0" fill="freeze"/>
+        </circle>
+        <text text-anchor="middle" x="60" y="60" style="visibility:hidden;">
+          <set attributeName="visibility" attributeType="CSS"
+            to="visible" begin="4.5s" dur="1s" fill="freeze"/>
+          All gone!
+        </text>
+
+        <g transform="translate(200,60)">
+          <rect x="-10" y="-10" width="20" height="20" style="fill:Aqua; stroke:black;">
+            <animateTransform attributeType="XML" attributeName="transform" type="scale"
+              from="1" to="4 2" begin="0s" dur="4s" fill="freeze" repeatCount="indefinite"/>
+          </rect>
+        </g>
+        
+        <g transform="translate(100,120)">
+          <rect x="-10" y="-10" width="20" height="20" style="fill:Tomato; stroke:DimGray; stroke-width:3;">
+            <animateTransform attributeName="transform" attributeType="XML"
+              type="scale" from="1" to="4 2"
+              additive="sum" begin="0s" dur="3s" fill="freeze" repeatCount="indefinite"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+              type="rotate" from="0" to="45"
+              additive="sum" begin="0s" dur="3s" fill="freeze" repeatCount="indefinite"/>
+          </rect>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0402">
+      <div class="cellid">cell0402</div>
+      <h4>&lt;animateMotion&gt; element</h4>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+        <g>
+          <rect x="0" y="0" width="30" height="30" style="fill:#ccc;"/>
+          <circle cx="30" cy="30" r="15" style="fill:#cfc; stroke:green; stroke-width:3;"/>
+          <animateMotion from="0,0" to="60,30" dur="4s" fill="freeze" repeatCount="indefinite"/>
+        </g>
+
+        <g transform="translate(0,100)">
+          <!-- show the path along which the triangle will move -->
+          <path id="cubicCurve1" d="M50,125 C100,25 150,225,200,125" style="fill:none; stroke:blue; stroke-width:1;"/>
+          <!-- Triangle to be moved along the motion path.
+              It is defined with an upright orientation with the base of
+              the triangle centered horizontally just above the origin. -->
+          <path d="M-10,-3 L10,-3 L0,-25z" style="fill:yellow; stroke:red;">
+            <animateMotion dur="6s" rotate="auto" fill="freeze" repeatCount="indefinite">
+              <mpath xlink:href="#cubicCurve1"/>
+            </animateMotion>
+          </path>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0103">
+      <div class="cellid">cell0103</div>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+      </svg>
+    </div>
+    <div class="cell0203">
+      <div class="cellid">cell0203</div>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+      </svg>
+    </div>
+    <div class="cell0303">
+      <div class="cellid">cell0303</div>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+      </svg>
+    </div>
+    <div class="cell0403">
+      <div class="cellid">cell0403</div>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

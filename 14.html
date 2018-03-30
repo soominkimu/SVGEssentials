@@ -7,14 +7,19 @@
 </head>
 <body>
   <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
-  <h3>Chap.</h3>
-  <a href="0.html">Prev</a>
+  <h3>Chap.14 Using the SVG DOM</h3>
+  <a href="13.html">Prev</a>
   <a href="index.html">Top</a>
-  <a href="0.html">Next</a>
+  <a href="15.html">Next</a>
   <div class="container">
     <div class="cell0101">
       <div class="cellid">cell0101</div>
+      <h4>Using the baseVal and animVal properties</h4>
       <svg width="300px" height="140px" viewBox="0 0 300 140">
+        <ellipse id="el1" cx="50%" cy="20" rx="40%" ry="1em">
+          <animate id="ani01" attributeName="rx" to="20%"
+                   begin="indefinite" dur="2s" fill="freeze"/>
+        </ellipse>
       </svg>
     </div>
     <div class="cell0201">

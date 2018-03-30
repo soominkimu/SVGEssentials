@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG Essentials</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
+  <h3>Chap.9 Text</h3>
+  <a href="08.html">Prev</a>
+  <a href="index.html">Top</a>
+  <a href="10.html">Next</a>
+  <div class="container">
+    <div class="cell0101">
+      <div class="cellid">cell0101</div>
+      <h4>Text placement and outlining / Alignment</h4>
+      <svg width="300px" height="140px" viewBox="0 0 300 140">
+        <!-- guide lines -->
+        <path d="M20 10,20 120 M10 30 100 30 M10 70 100 70 M10 110 100 110" style="stroke:green;"/>
+
+        <text x="20" y="30">Simplest Text</text>
+        <text x="20" y="70" style="stroke:black;">Outlined/filled</text>
+        <text x="20" y="110" style="stroke:black; stroke-width:0.5; fill:none;">Outlined only</text>
+
+        <g style="font-size:14pt;" transform="translate(120,0)">
+          <path d="M100 10 100 100" style="stroke:gray; fill:none;"/>
+          <text x="100" y="30" style="text-anchor:start;">Start</text>
+          <text x="100" y="60" style="text-anchor:middle; fill:green;">Middle</text>
+          <text x="100" y="90" style="text-anchor:end;">End</text>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0201">
+      <div class="cellid">cell0201</div>
+      <h4>Text weight, style, decoration, and spacing</h4>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+        <g style="font-size:18pt">
+          <text x="20" y="20" style="font-weight:bold;">bold</text>
+          <text x="120" y="20" style="font-style:italic;">italic</text>
+          <text x="20" y="60" style="text-decoration:underline;">under</text>
+          <text x="120" y="60" style="text-decoration:overline; fill:olive;">over</text>
+          <text x="200" y="60" style="text-decoration:line-through;">through</text>
+          <text x="20" y="90" style="word-spacing:10pt; fill:blue;">more word space</text>
+          <text x="20" y="120" style="word-spacing:-3pt; fill:red;">less word space</text>
+          <text x="20" y="150" style="letter-spacing:5pt;">wide letter space</text>
+          <text x="20" y="180" style="letter-spacing:-.9pt; fill:navy;">narrow letter space</text>
+        </g>
+      </svg>
+    </div>
+    <div class="cell0301">
+      <div class="cellid">cell0301</div>
+      <svg width="300px" height="200px" viewBox="0 0 300 200">
+      </svg>
+    </div>
+    <div class="cell0401">
+      <div class="cellid">cell0401</div>
+    </div>
+    <div class="cell0102">
+      <div class="cellid">cell0102</div>
+    </div>
+    <div class="cell0202">
+      <div class="cellid">cell0202</div>
+    </div>
+    <div class="cell0302">
+      <div class="cellid">cell0302</div>
+    </div>
+    <div class="cell0402">
+      <div class="cellid">cell0402</div>
+    </div>
+    <div class="cell0103">
+      <div class="cellid">cell0103</div>
+    </div>
+    <div class="cell0203">
+      <div class="cellid">cell0203</div>
+    </div>
+    <div class="cell0303">
+      <div class="cellid">cell0303</div>
+    </div>
+    <div class="cell0403">
+      <div class="cellid">cell0403</div>
+    </div>
+  </div>
+</body>
+</html>

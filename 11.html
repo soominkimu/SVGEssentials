@@ -7,14 +7,39 @@
 </head>
 <body>
   <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
-  <h3>Chap.</h3>
-  <a href="0.html">Prev</a>
+  <h3>Chap.11 Filters</h3>
+  <a href="10.html">Prev</a>
   <a href="index.html">Top</a>
-  <a href="0.html">Next</a>
+  <a href="12.html">Next</a>
   <div class="container">
     <div class="cell0101">
       <div class="cellid">cell0101</div>
-      <svg width="300px" height="140px" viewBox="0 0 300 140">
+      <h4>&lt;feGaussianBlur&gt; for a Drop Shadow</h4>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+        <defs>
+          <filter id="drop-shadow1">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+          </filter>
+          
+          <filter id="drop-shadow2">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+            <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+            <feMerge>
+              <feMergeNode in="offsetBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <g id="flower">
+          <image xlink:href="images/flower.svg" x="0" y="0" width="150" height="200"/>
+        </g>
+        <g id="flower" filter="url(#drop-shadow1)" transform="translate(150,0)">
+          <image xlink:href="images/flower.svg" x="0" y="0" width="150" height="200"/>
+        </g>
+        <g id="flower" filter="url(#drop-shadow2)" transform="translate(95,80)">
+          <image xlink:href="images/flower.svg" x="0" y="0" width="150" height="200"/>
+        </g>
       </svg>
     </div>
     <div class="cell0201">
