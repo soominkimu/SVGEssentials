@@ -32,33 +32,234 @@
     </div>
     <div class="cell0201">
       <div class="cellid">cell0201</div>
+      <h4>Complex clip paths</h4>
+      <svg width="300" height="280" viewBox="0 0 300 280">
+        <defs>
+          <clipPath id="curveClip1">
+            <path id="curve1"
+              d="M5 55 C25 5,45 -25,75 55,85 85,20, 105,40 55 Z"
+              style="stroke:black; stroke-width:2; fill:none;"/>
+          </clipPath>
+          <clipPath id="textClip1">
+            <text id="text1" x="20" y="20" transform="rotate(60)"
+              style="font-family:'Liberation Sans'; font-size:48pt; stroke:Indigo; stroke-width:2; fill:none;">
+              CLIP
+            </text>
+          </clipPath>
+          <g id="shapes1">
+            <rect x="0" y="50" width="90" height="60" style="fill:MediumAquamarine;"/>
+            <circle cx="25" cy="25" r="25" style="fill:olive;"/>
+            <polygon points="30 0 80 0 80 100" style="fill:IndianRed;"/>
+          </g>
+        </defs>
+        <!-- draw with curved clip-path -->
+        <use xlink:href="#shapes1" style="clip-path:url(#curveClip1);"/>
+
+        <!-- draw with text as clip-path -->
+        <use transform="translate(100,0)"
+          xlink:href="#shapes1" style="clip-path:url(#textClip1);"/>
+
+        <g transform="translate(0,130)">
+          <use xlink:href="#shapes1"/>
+          <use xlink:href="#curve1"/>  <!-- show clip path -->
+        </g>
+
+        <g transform="translate(100,130)">
+          <use xlink:href="#shapes1"/>
+          <use xlink:href="#text1"/>  <!-- show clip path -->
+        </g>
+        </g>
+      </svg>
     </div>
     <div class="cell0301">
       <div class="cellid">cell0301</div>
+      <h4>clipPathUnits using objectBoundingBox</h4>
+      <svg width="300" height="240" viewBox="0 0 300 240">
+        <defs>
+          <clipPath id="circularPath2" clipPathUnits="objectBoundingBox">
+            <circle cx="0.5" cy="0.5" r="0.5"/>
+          </clipPath>
+
+          <g id="shapes2">
+            <rect x="0" y="50" width="100" height="50" style="fill:MediumAquamarine;"/>
+            <circle cx="25" cy="25" r="25" style="fill:olive;"/>
+            <polygon points="30 0 80 0 80 100" style="fill:IndianRed;"/>
+          </g>
+
+          <g id="words2">
+            <text x="0" y="19" style="font-family:'Liberation Sans'; font-size:14pt;">
+              <tspan x="0" y="19">If you have form'd a circle'</tspan>
+              <tspan x="12" y="35">to go into,</tspan>
+              <tspan x="0" y="51">Go into it yourself</tspan>
+              <tspan x="12" y="67">and see how you would do.</tspan>
+              <tspan x="50" y="87">&#8212;William Blake</tspan>
+            </text>
+          </g>
+        </defs>
+
+        <use xlink:href="#shapes2" style="clip-path:url(#circularPath2);"/>
+        <use xlink:href="#words2" transform="translate(0,120)" style="clip-path:url(#circularPath2);"/>
+      </svg>
     </div>
     <div class="cell0401">
       <div class="cellid">cell0401</div>
     </div>
     <div class="cell0102">
       <div class="cellid">cell0102</div>
+      <h4>Masking with opaque colors</h4>
+      <svg width="300" height="240" viewBox="0 0 300 240">
+        <defs>
+          <mask id="redmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill:#f00;"/>
+          </mask>
+          <mask id="greenmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill:#0f0;"/>
+          </mask>
+          <mask id="bluemask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill:#00f;"/>
+          </mask>
+          <mask id="whitemask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill:#fff;"/>
+          </mask>
+        </defs>
+
+        <!-- display the colors to show relative brightness (luminance) -->
+        <rect x="10" y="10" width="50" height="50" style="fill:#f00;"/>
+        <rect x="70" y="10" width="50" height="50" style="fill:#0f0;"/>
+        <rect x="130" y="10" width="50" height="50" style="fill:#00f;"/>
+        <rect x="190" y="10" width="50" height="50" style="fill:#fff; stroke:black;"/>
+
+        <!-- background content to show transparency -->
+        <rect x="10" y="72" width="250" height="5" style="fill:yellow"/>
+        <rect x="10" y="112" width="250" height="5" style="fill:yellow"/>
+
+        <g style="mask:url(#redmask); font-size:14pt; text-anchor:middle;">
+          <text x="35" y="80">Red</text>
+          <circle id="circle25" cx="35" cy="115" r="25" style="fill:black;"/>
+        </g>
+        <g style="mask:url(#greenmask); font-size:14pt; text-anchor:middle;">
+          <text x="95" y="80">Green</text>
+          <use xlink:href="#circle25" transform="translate(60,0)"/>
+        </g>
+        <g style="mask:url(#bluemask); font-size:14pt; text-anchor:middle;">
+          <text x="155" y="80">Blue</text>
+          <use xlink:href="#circle25" transform="translate(120,0)"/>
+        </g>
+        <g style="mask:url(#whitemask); font-size:14pt; text-anchor:middle;">
+          <text x="215" y="80">White</text>
+          <use xlink:href="#circle25" transform="translate(180,0)"/>
+        </g>
+      </svg>
     </div>
     <div class="cell0202">
       <div class="cellid">cell0202</div>
+      <h4>Alpha value equal to opacity</h4>
+      <svg width="300" height="200" viewBox="0 0 300 200">
+        <defs>
+          <mask id="fullmask" x="0" y="0" width="1" height="1"
+            maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill-opacity:1.0; fill:white;"/>
+          </mask>
+          <mask id="three-fourths" x="0" y="0" width="1" height="1"
+            maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill-opacity:0.75; fill:white;"/>
+          </mask>
+          <mask id="one-half" x="0" y="0" width="1" height="1"
+            maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill-opacity:0.5; fill:white;"/>
+          </mask>
+          <mask id="one-fourth" x="0" y="0" width="1" height="1"
+            maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill-opacity:0.25; fill:white;"/>
+          </mask>
+        </defs>
+        <g style="font-szie:14pt; text-anchor:middle; fill:black;">
+          <g style="mask:url(#fullmask);">
+            <use xlink:href="#circle25" transform="translate(0,-80)"/>
+            <text x="35" y="80">100%</text>
+          </g>
+          <g style="mask:url(#three-fourths);">
+            <use xlink:href="#circle25" transform="translate(60,-80)"/>
+            <text x="95" y="80">75%</text>
+          </g>
+          <g style="mask:url(#one-half);">
+            <use xlink:href="#circle25" transform="translate(120,-80)"/>
+            <text x="155" y="80">50%</text>
+          </g>
+          <g style="mask:url(#one-fourth);">
+            <use xlink:href="#circle25" transform="translate(180,-80)"/>
+            <text x="215" y="80">25%</text>
+          </g>
+        </g>
+      </svg>
     </div>
     <div class="cell0302">
       <div class="cellid">cell0302</div>
+      <svg width="300" height="240" viewBox="0 0 300 240">
+      </svg>
     </div>
     <div class="cell0402">
       <div class="cellid">cell0402</div>
     </div>
     <div class="cell0103">
       <div class="cellid">cell0103</div>
+      <h4>Case Study: Masking a Graphic</h4>
+      <svg width="320" height="300" viewBox="0 0 320 300">
+        <defs>
+          <path id="upper-curve" d="M-8 154 A162 130 0 1 1 316 154"/>
+          <path id="lower-curve" d="M-21 154 A175 140 0 1 0 329 154"/>
+          <radialGradient id="fade">
+            <stop offset="0%" style="stop-color:white; stop-opacity:1.0;"/>
+            <stop offset="85%" style="stop-color:white; stop-opacity:0.5;"/>
+            <stop offset="100%" style="stop-color:white; stop-opacity:0.0;"/>
+          </radialGradient>
+          <mask id="fademask" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="fill:url(#fade);"/>
+          </mask>
+        </defs>
+
+        <g id="SeoulOnFlag">
+          <!-- gray drop shadow -->
+          <ellipse cx="154" cy="154" rx="150" ry="120" style="fill:#999999;"/>
+          <!-- light blue ellipse -->
+          <ellipse cx="152" cy="152" rx="150" ry="120" style="fill:#cceeff;"/>
+          <!-- large light red semicircle fills upper half,
+               followed by small light red semicircle that dips into
+               lower-left half of symbol -->
+          <path d="M 302 152 A 150 120, 0,1,0,2 152 A 75 60, 0,1,0,152 152" style="fill:#ffcccc;"/>
+          <!-- light blue semicircle rises into upper-right half of symbol -->
+          <path d="M 152 152 A 75 60, 0,1,1, 302 152" style="fill:#cceeff;"/>
+
+          <text font-family="bakbatn, serif" style="font-size:18pt; text-anchor:middle;">
+            <textPath xlink:href="#upper-curve" startOffset="50%">
+              서울 - 대한민국
+            </textPath>
+          </text>
+          <text style="font-size:14pt; text-anchor:middle;">
+            <textPath xlink:href="#lower-curve" startOffset="50%">
+              Seoul - Republic of Korea
+            </textPath>
+          </text>
+        </g>
+
+        <image xlink:href="images/tango.jpg" x="100" y="78" width="110" height="150"/>
+        <rect x="100" y="78" width="110" height="150" style="stroke:none; fill:none;"/> <!-- debugging -->
+
+      </svg>
     </div>
     <div class="cell0203">
       <div class="cellid">cell0203</div>
+      <h4>Masked image</h4>
+      <svg width="320" height="300" viewBox="0 0 320 300">
+        <use xlink:href="#SeoulOnFlag"/>
+        <image xlink:href="images/tango.jpg" x="100" y="78" width="110" height="150"
+              style="mask:url(#fademask);"/>
+      </svg>
     </div>
     <div class="cell0303">
       <div class="cellid">cell0303</div>
+      <svg width="300" height="240" viewBox="0 0 300 240">
+      </svg>
     </div>
     <div class="cell0403">
       <div class="cellid">cell0403</div>

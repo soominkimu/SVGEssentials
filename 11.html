@@ -31,19 +31,42 @@
           </filter>
         </defs>
 
-        <g id="flower">
+        <g id="flower0">
           <image xlink:href="images/flower.svg" x="0" y="0" width="150" height="200"/>
         </g>
-        <g id="flower" filter="url(#drop-shadow1)" transform="translate(150,0)">
+        <g id="flower1" filter="url(#drop-shadow1)" transform="translate(150,0)">
           <image xlink:href="images/flower.svg" x="0" y="0" width="150" height="200"/>
         </g>
-        <g id="flower" filter="url(#drop-shadow2)" transform="translate(95,80)">
+        <g id="flower2" filter="url(#drop-shadow2)" transform="translate(95,80)">
           <image xlink:href="images/flower.svg" x="0" y="0" width="150" height="200"/>
         </g>
       </svg>
     </div>
     <div class="cell0201">
       <div class="cellid">cell0201</div>
+      <h4>The &lt;feColorMatrix&gt; Element - Glow filter</h4>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+        <defs>
+          <!-- Glow filter -->
+          <filter id="glow">
+            <feColorMatrix type="matrix"
+              values=
+                "0 0 0 0   0
+                 0 0 0 0.9 0
+                 0 0 0 0.9 0
+                 0 0 0 1   0"/>
+            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <use xlink:href="#flower2" transform="translate(-70,-50)"/>
+        <text x="120" y="50" style="filter:url(#glow); fill:#003333; font-size:18;">
+          Spring <tspan x="120" y="70">Flower</tspan>
+        </text>
+      </svg>
     </div>
     <div class="cell0301">
       <div class="cellid">cell0301</div>
