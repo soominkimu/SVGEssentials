@@ -70,33 +70,120 @@
     </div>
     <div class="cell0301">
       <div class="cellid">cell0301</div>
+      <h4>The &lt;feImage&gt; Filter</h4>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+        <defs>
+          <filter id="sky-shadow" filterUnits="objectBoundingBox">
+            <feImage xlink:href="images/sky.jpg" result="sky"
+              x="0" y="0" width="100%" height="100%"
+              preserveAspectRatio="none"/>
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+            <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+            <feMerge>
+              <feMergeNode in="sky"/>
+              <feMergeNode in="offsetBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <g id="flower3" filter="url(#sky-shadow)" transform="translate(0,0)">
+          <image xlink:href="images/flower.svg" x="20" y="0" width="150" height="200"/>
+        </g>
+
+        <!-- show original image -->
+        <image xlink:href="images/sky.jpg" x="170" y="80" width="122" height="104"/>
+
+      </svg>
     </div>
     <div class="cell0401">
       <div class="cellid">cell0401</div>
+      <h4>The &lt;feComponentTransfer&gt; Filter</h4>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+        <filter id="brightness-shadow" filterUnits="objectBoundingBox">
+          <feImage xlink:href="images/sky.jpg" result="skyL"
+              x="0" y="0" width="100%" height="100%"
+              preserveAspectRatio="none"/>
+          <feComponentTransfer in="sky" result="sky">
+            <feFuncB type="linear" slope="3" intercept="0"/>
+            <feFuncR type="linear" slope="1.5" intercept="0.2"/>
+            <feFuncG type="linear" slope="1.5" intercept="0.2"/>
+          </feComponentTransfer>
+          <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+          <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+          <feMerge>
+            <feMergeNode in="sky"/>
+            <feMergeNode in="offsetBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        
+        <g id="flower4" filter="url(#brightness-shadow)" transform="translate(0,0)">
+          <image xlink:href="images/flower.svg" x="20" y="0" width="150" height="200"/>
+        </g>
+      </svg>
     </div>
     <div class="cell0102">
       <div class="cellid">cell0102</div>
+      <h4>Gamma adjustment with feComponentTransfer</h4>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+        <filter id="brightness-shadow1" filterUnits="objectBoundingBox">
+          <feImage xlink:href="images/sky.jpg" result="sky"
+              x="0" y="0" width="100%" height="100%"
+              preserveAspectRatio="none"/>
+          <feComponentTransfer in="sky" result="sky">
+            <feFuncB type="gamma" amplitude="1" exponent="0.2" offset="0"/>
+            <feFuncR type="gamma" amplitude="1" exponent="0.707" offset="0"/>
+            <feFuncG type="gamma" amplitude="1" exponent="0.707" offset="0"/>
+          </feComponentTransfer>
+          <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+          <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+          <feMerge>
+            <feMergeNode in="sky"/>
+            <feMergeNode in="offsetBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        
+        <g id="flower4" filter="url(#brightness-shadow1)" transform="translate(0,0)">
+          <image xlink:href="images/flower.svg" x="20" y="0" width="150" height="200"/>
+        </g>
+      </svg>
     </div>
     <div class="cell0202">
       <div class="cellid">cell0202</div>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+      </svg>
     </div>
     <div class="cell0302">
       <div class="cellid">cell0302</div>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+      </svg>
     </div>
     <div class="cell0402">
       <div class="cellid">cell0402</div>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+      </svg>
     </div>
     <div class="cell0103">
       <div class="cellid">cell0103</div>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+      </svg>
     </div>
     <div class="cell0203">
       <div class="cellid">cell0203</div>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+      </svg>
     </div>
     <div class="cell0303">
       <div class="cellid">cell0303</div>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+      </svg>
     </div>
     <div class="cell0403">
       <div class="cellid">cell0403</div>
+      <svg width="300" height="250" viewBox="0 0 300 250">
+      </svg>
     </div>
   </div>
 </body>
