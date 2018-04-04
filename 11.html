@@ -4,13 +4,34 @@
   <meta charset="UTF-8">
   <title>SVG Essentials</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+  #overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    opacity: .2;
+    z-index: 10;
+  }
+  </style>
 </head>
 <body>
+  <div id="overlay">
+      <svg x="0" y="0" width="100%" height="100%" viewBox="0 0 300 250">
+        <rect x="50" y="30" width="200" height="100" fill="none" stroke="black" stroke-width="5"/>
+        <image xlink:href="images/turtle.svg" x="0" y="50" width="80">
+          <animateMotion from="0,0" to="150,0" dur="4s" fill="freeze" repeatCount="2"/>
+        </image>
+      </svg>
+  </div>
   <h2>SVG Essentials by J. Eisenberg and A. Bellamy-Royds, 2nd ed</h2>
   <h3>Chap.11 Filters</h3>
-  <a href="10.html">Prev</a>
-  <a href="index.html">Top</a>
-  <a href="12.html">Next</a>
+  <div class="menu">
+    <a href="10.html">Prev</a>
+    <a href="index.html">Top</a>
+    <a href="12.html">Next</a>
+  </div>
   <div class="container">
     <div class="cell0101">
       <div class="cellid">cell0101</div>
