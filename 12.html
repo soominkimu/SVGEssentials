@@ -33,6 +33,30 @@
         stroke-width: 6;
       }
     }
+    svg.absolute {
+      width: 300px;
+      display: block;
+      position: absolute;
+    }
+    .ball1 {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      
+      offset-path: path('M10 80 Q 77.5 10, 145 80 T 280 80');
+      offset-distance: 0%;
+
+      animation: red-ball 2s linear alternate infinite;
+    }
+    @keyframes red-ball {
+      from {
+        offset-distance: 0%;
+      }
+      to {
+        offset-distance: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -259,7 +283,7 @@
         </defs>
         <use id="starG" class="starStyle" xlink:href="#starDef"
           transform="translate(100,140)" style="fill:#008000; stroke:#008000;"/>
-        <use id="starM"class="starStyle" xlink:href="#starDef"
+        <use id="starM" class="starStyle" xlink:href="#starDef"
            transform="translate(280,180) scale(.1)" style="fill:magenta; stroke:magenta;"/>
       </svg>
     </div>
@@ -275,14 +299,17 @@
       <div class="cellid">cell0303</div>
       <h5>SMIL(Synchronized Multimedia Integration Language) is dead!</h5>
       <svg width="300px" height="200px" viewBox="0 0 300 200">
-        <image xlink:href="images/turtle.svg" x="0" y="50" width="120">
-          <animateMotion from="0,0" to="150,0" dur="4s" fill="freeze" repeatCount="2"/>
+        <image xlink:href="images/pikachu.svg" x="0" y="50" width="120">
+          <animateMotion from="150,0" to="0,0" dur="4s" fill="freeze" repeatCount="2"/>
         </image>
       </svg>
     </div>
     <div class="cell0403">
       <div class="cellid">cell0403</div>
-      <svg width="300px" height="200px" viewBox="0 0 300 200">
+      <svg class="absolute" width="300px" height="200px" viewBox="0 0 300 200">
+        <path fill="transparent" stroke="#888888" stroke-width="1"
+          d="M10 80 Q 77.5 10, 145 80 T 280 80" class="path1"/>
+        <div class="ball1"/>
       </svg>
     </div>
   </div>
