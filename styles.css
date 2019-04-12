@@ -1,17 +1,33 @@
 h1, h2, h3, h4 {
   margin: 2px;
 }
+
+body {
+  counter-reset: cont;
+}
+
+h2 {
+  font-size: 1em;
+  color: DarkGray;
+}
+
+nav {
+  background-color: LemonChiffon;
+}
+
 div.background-cat {
   background-image: url("images/cat.svg");
   background-size: 100% 100%;
   width: 200px;
   height: 200px;
 }
+
 .menu {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-align: center;
 }
+
 .container {
   display: grid;
   width: 900px;
@@ -53,9 +69,12 @@ svg {
   */
 }
 
-.cellid {
+div[class^="cell"]::before {
+  counter-increment: cont;
+  content: counter(cont);
   font-family: cursive;
-  font-size: .7em;
-  color: rgba(0,128,0,.5);
-  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: rgba(0,128,0,.6);
+  line-height: 1em;
 }
